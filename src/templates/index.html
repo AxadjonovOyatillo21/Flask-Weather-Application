@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title>Weather</title>
+   	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+   	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+   	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.min.css') }}">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-success mb-4">
+		<a href="#" class="navbar-brand text-light"><h4><span style="font-size: 2.5rem;">&#127782;</span> Weather Application</h4></a>
+	</nav>
+	<div class="container">
+
+		{% for message in get_flashed_messages() %}
+		<div class="alert alert-danger alert-dismissible fade show" role="alert" id="myAlert">
+  			<h5>{{ message }} </h5>
+  			<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="getElementById('myAlert').style.display='none'" class="alrt-btn">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+		{% endfor %}
+   		<form method="post" class="mb-4">
+   			<div class="form-row justify-content-space-between">
+   				<div class="form-group col-sm-10">
+       				<input type="text" class="form-control form-control-lg" name="city" placeholder="Search">
+       			</div>
+       			<div class="form-group mb-2 col">
+       				<div class="btn-group">
+       					<button class="btn btn-outline-primary btn-lg" type="submit">
+       			    		Search <i class="fas fa-search"></i>
+       			 		</button>
+       				</div>
+       			</div>	
+   			</div>
+       		
+    	</form>
+    	{% if data.country_code and data.cityname and data.coordinate and data.temp and data.temp_cel and data.pressure and data.humidity %}
+    	<div class="alert alert-warning">
+    		<div class="alert alert-success">
+    			<h5>
+    				<i class="fas fa-flag"></i> &nbsp;&nbsp;Country: &nbsp;&nbsp;
+    				<img src="{{ 'https://www.countryflags.io/' + data.country_code.lower() + '/flat/64.png' }}">
+    			</h5>
+    			<h5 class="alert-heading"><i class="fas fa-qrcode"></i> &nbsp;&nbsp;Country code: &nbsp;&nbsp;{{data.country_code}}</h5>
+    		</div>
+    		<div class="alert alert-primary">
+    			<h6 class="mb-0"><i class="fas fa-city"></i> &nbsp;&nbsp;City name: &nbsp;&nbsp;{{data.cityname}}</h6>
+    		</div>
+    		<div class="alert alert-info">
+    			<p class="mb-0"><i class="fas fa-map-marked-alt"></i> &nbsp;&nbsp;Coordinate: &nbsp;&nbsp;{{data.coordinate}}</p>
+    		</div>
+    		<div class="alert alert-danger">
+    			<p class="mb-0"><i class="fas fa-temperature-high"></i> &nbsp;&nbsp;Temp (in kelvin): &nbsp;&nbsp;{{data.temp}}</p>
+        	 	<p class="mb-0"><i class="fas fa-temperature-high"></i> &nbsp;&nbsp;Temp (in celcius): &nbsp;&nbsp;{{data.temp_cel}}</p>
+    		</div>
+    		<div class="alert alert-info">
+    			<p><i class="fas fa-wind"></i> &nbsp;&nbsp;Pressure: &nbsp;&nbsp;{{data.pressure}} Pa </p>
+            	<p><i class="fas fa-tint">%</i> &nbsp;&nbsp;Humidity: &nbsp;&nbsp;{{data.humidity}} %</p>
+    		</div>
+    	</div>
+    	{% endif %}
+    	<footer class="footer mt-auto py-4 p-1">
+  			<div class="text-center">
+    			<h4 class="mb-1">&copy; 2021 Weather Application</h4>
+  			</div>
+		</footer>
+
+	</div>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jQuery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+</body>
+</html>
