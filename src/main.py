@@ -30,7 +30,7 @@ def weather():
 		city = 'Andijan'
 	# your API key will come here 
 
-	api = '0e4b23dd401f1441ff166699de6b225b'
+	api = '<YOUR_API_KEY>'
 	# source contain json data from api 
 	try:
 		source = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + api).read() 
