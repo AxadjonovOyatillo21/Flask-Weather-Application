@@ -1,2 +1,2 @@
 
-body{background-image: url("../images/bg.jpg");background-repeat: no-repeat;background-size: cover;}.btn{background-color: white;}button:hover {color: #909090;}button:focus{outline: none;border: none;}
+body{background-image: url("../images/bg.jpg");background-repeat: no-repeat;background-size: cover;height: 100vh;}.btn{background-color: white;}button:hover {color: #909090;}button:focus{outline: none;border: none;}
