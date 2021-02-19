@@ -2,7 +2,8 @@
 <html lang="en" dir="ltr">
 <head>
 	<meta charset="utf-8">
-	<title>Weather</title>
+	<meta charset="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %} Weather {% endblock %}</title>
    	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
    	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
    	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.min.css') }}">
@@ -12,7 +13,7 @@
 		<a href="#" class="navbar-brand text-light"><h4><span style="font-size: 2.5rem;">&#127782;</span> Weather Application</h4></a>
 	</nav>
 	<div class="container">
-
+		{% block content %}
 		{% for message in get_flashed_messages() %}
 		<div class="alert alert-danger alert-dismissible fade show" role="alert" id="myAlert">
   			<h5>{{ message }} </h5>
@@ -61,12 +62,12 @@
     		</div>
     	</div>
     	{% endif %}
+		{% endblock %}
     	<footer class="footer mt-auto py-4 p-1">
   			<div class="text-center">
     			<h4 class="mb-1">&copy; 2021 Weather Application</h4>
   			</div>
 		</footer>
-
 	</div>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
