@@ -15,9 +15,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(32)
 
 
-def celcius(temp):
-	return int(temp) - 273
-  
+
 @app.route('/', methods =['POST', 'GET']) 
 def weather(): 
 	global source
